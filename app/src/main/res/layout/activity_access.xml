@@ -6,57 +6,85 @@
     android:layout_height="match_parent"
     tools:context=".Activity.AccessActivity">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
+    <ScrollView
+        android:id="@+id/accessScrollView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_margin="30dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/access"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:text="@string/access"
-            android:textAppearance="@style/access"
-            android:gravity="center_vertical"/>
-
-        <EditText
-            android:id="@+id/editUsername"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:hint="Please enter your username"
-            android:inputType="textPersonName"
-            android:background="@drawable/input_border"
-            android:textSize="16sp"
-            android:layout_below="@id/access"
-            android:layout_marginTop="20dp"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:autofillHints="" />
-
-        <EditText
-            android:id="@+id/editPin"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:hint="Set Pin"
-            android:inputType="text|number"
-            android:background="@drawable/input_border"
-            android:textSize="16sp"
-            android:layout_below="@id/editUsername"
-            android:layout_marginTop="20dp"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:autofillHints="" />
-
-        <CheckBox
-            android:id="@+id/setPin"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Set Pin"
-            android:textSize="16sp"
-            android:layout_below="@id/editPin"/>
+            android:layout_margin="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/access"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:gravity="center_vertical"
+                android:text="@string/access"
+                android:textAppearance="@style/access" />
+
+            <EditText
+                android:id="@+id/editUsername"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_below="@+id/access"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:autofillHints="name"
+                android:background="@drawable/input_border"
+                android:hint="@string/enter_username"
+                android:inputType="textPersonName"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:textSize="16sp"
+                android:focusedByDefault="true"/>
+
+            <EditText
+                android:id="@+id/editPin"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_below="@id/editUsername"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:autofillHints="pin"
+                android:background="@drawable/input_border"
+                android:hint="@string/set_pin"
+                android:inputType="numberPassword"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:textSize="16sp"/>
+
+            <CheckBox
+                android:id="@+id/setPin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editPin"
+                android:fontFamily="@font/montserrat_light"
+                android:text="@string/set_pin"
+                android:textSize="16sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/enterBtn"
+                android:layout_width="match_parent"
+                android:layout_height="66dp"
+                android:layout_below="@id/setPin"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/btn_border"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/enterBtn"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+        </RelativeLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

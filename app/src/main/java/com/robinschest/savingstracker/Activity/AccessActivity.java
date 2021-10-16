@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import com.robinschest.savingstracker.R;
 
+
 public class AccessActivity extends AppCompatActivity {
 
     @Override
