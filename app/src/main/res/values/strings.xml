@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Savings Tracker</string>
+    <string name="access">Access</string>
+    <string name="username">Please Enter a Username</string>
+</resources>
