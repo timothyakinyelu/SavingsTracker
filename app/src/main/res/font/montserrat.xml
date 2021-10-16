@@ -9,11 +9,11 @@
         android:fontWeight="400"
         android:font="@font/montserrat_regular" />
     <font
-        android:fontStyle="italic"
+        android:fontStyle="normal"
         android:fontWeight="400"
         android:font="@font/montserrat_light" />
     <font
-        android:fontStyle="italic"
+        android:fontStyle="normal"
         android:fontWeight="400"
         android:font="@font/montserrat_thin" />
 </font-family>

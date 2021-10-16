@@ -60,14 +60,15 @@
                 android:inputType="numberPassword"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
-                android:textSize="16sp"/>
+                android:textSize="16sp"
+                android:visibility="gone"/>
 
             <CheckBox
                 android:id="@+id/setPin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/editPin"
-                android:fontFamily="@font/montserrat_light"
+                android:fontFamily="@font/montserrat_regular"
                 android:text="@string/set_pin"
                 android:textSize="16sp" />
 
