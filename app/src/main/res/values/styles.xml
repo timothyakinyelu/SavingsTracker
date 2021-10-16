@@ -10,7 +10,7 @@
         <item name="android:textColorPrimary">
             #000000
         </item>
-        <item name="android:fontFamily">@font/Montserrat_Bold</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
 
     </style>
 

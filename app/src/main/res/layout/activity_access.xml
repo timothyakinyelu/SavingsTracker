@@ -8,7 +8,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_margin="30dp">
@@ -22,6 +22,7 @@
             android:gravity="center_vertical"/>
 
         <EditText
+            android:id="@+id/editUsername"
             android:layout_width="match_parent"
             android:layout_height="56dp"
             android:hint="Please enter your username"
@@ -33,6 +34,28 @@
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
             android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/editPin"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:hint="Set Pin"
+            android:inputType="text|number"
+            android:background="@drawable/input_border"
+            android:textSize="16sp"
+            android:layout_below="@id/editUsername"
+            android:layout_marginTop="20dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:autofillHints="" />
+
+        <CheckBox
+            android:id="@+id/setPin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Set Pin"
+            android:textSize="16sp"
+            android:layout_below="@id/editPin"/>
 
     </RelativeLayout>
 
