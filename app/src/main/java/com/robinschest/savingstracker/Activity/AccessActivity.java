@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -37,6 +40,18 @@ public class AccessActivity extends AppCompatActivity {
             }
         });
         onCheckBoxClick();
+
+        parentLayout.setOnClickListener(v -> hideKeyboard(AccessActivity.this));
+    }
+
+
+
+    public static void hideKeyboard(Activity activity) {
+        View view = activity.findViewById(R.id.parentLayout);
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 
     private void authenticate() {
@@ -61,7 +76,7 @@ public class AccessActivity extends AppCompatActivity {
     private boolean validateData() {
         if(editUsername.getText().toString().equals("")) {
             warnUsername.setVisibility(View.VISIBLE);
-            warnUsername.setText("Please enter a username");
+            warnUsername.setText("Username is required!");
             return false;
         }
 
@@ -83,6 +98,8 @@ public class AccessActivity extends AppCompatActivity {
         enterBtn = findViewById(R.id.enterBtn);
         warnUsername = findViewById(R.id.warnUsername);
         warnPin = findViewById(R.id.warnPin);
+
+        editUsername.requestFocus();
     }
 
     public void onCheckBoxClick() {
@@ -94,6 +111,7 @@ public class AccessActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "selected", Toast.LENGTH_LONG).show();
                 } else {
                     editPin.setVisibility(View.GONE);
+                    warnPin.setVisibility(View.GONE);
                     Toast.makeText(getApplicationContext(), "not selected", Toast.LENGTH_LONG).show();
                 }
             }

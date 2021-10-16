@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">Savings Tracker</string>
     <string name="access">Access</string>
-    <string name="username">Please Enter a Username</string>
     <string name="set_pin">Set Pin</string>
-    <string name="enter_username">Please enter your username</string>
+    <string name="enter_username">Enter your username</string>
     <string name="enterBtn">Enter</string>
 </resources>

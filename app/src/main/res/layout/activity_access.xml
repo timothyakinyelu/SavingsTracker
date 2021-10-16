@@ -33,66 +33,78 @@
                 android:text="@string/access"
                 android:textAppearance="@style/access" />
 
-            <EditText
-                android:id="@+id/editUsername"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_below="@+id/access"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:autofillHints="name"
-                android:background="@drawable/input_border"
-                android:hint="@string/enter_username"
-                android:inputType="textPersonName"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"
-                android:textSize="16sp"/>
-
-            <TextView
-                android:id="@+id/warnUsername"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/editUsername"
-                android:fontFamily="@font/montserrat"
-                android:textStyle="italic"
-                android:textColor="@color/red"
-                android:visibility="gone"/>
+                android:id="@+id/usernameLayout"
+                android:layout_below="@+id/access">
 
-            <EditText
-                android:id="@+id/editPin"
+                <EditText
+                    android:id="@+id/editUsername"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:autofillHints="name"
+                    android:background="@drawable/input_border"
+                    android:hint="@string/enter_username"
+                    android:inputType="textPersonName"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/warnUsername"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/editUsername"
+                    android:fontFamily="@font/montserrat"
+                    android:textStyle="italic"
+                    android:textColor="@color/red"
+                    android:visibility="gone"/>
+            </RelativeLayout>
+
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:layout_below="@id/editUsername"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:autofillHints="pin"
-                android:background="@drawable/input_border"
-                android:hint="@string/set_pin"
-                android:inputType="numberPassword"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"
-                android:textSize="16sp"
-                android:visibility="gone"/>
-
-            <TextView
-                android:id="@+id/warnPin"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/editPin"
-                android:paddingBottom="10dp"
-                android:fontFamily="@font/montserrat"
-                android:textStyle="italic"
-                android:textColor="@color/red"
-                android:visibility="gone"/>
+                android:id="@+id/pinLayout"
+                android:layout_below="@+id/usernameLayout">
+
+                <EditText
+                    android:id="@+id/editPin"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:autofillHints="pin"
+                    android:background="@drawable/input_border"
+                    android:hint="@string/set_pin"
+                    android:inputType="numberPassword"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:textSize="16sp"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/warnPin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/editPin"
+                    android:fontFamily="@font/montserrat"
+                    android:textStyle="italic"
+                    android:textColor="@color/red"
+                    android:visibility="gone"/>
+            </RelativeLayout>
+
 
             <CheckBox
                 android:id="@+id/setPin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/editPin"
+                android:layout_below="@id/pinLayout"
                 android:fontFamily="@font/montserrat"
                 android:text="@string/set_pin"
-                android:layout_marginTop="10dp"
                 android:textSize="16sp" />
 
             <androidx.appcompat.widget.AppCompatButton
