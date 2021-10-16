@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.AccessActivity">
+    tools:context=".Activity.AccessActivity"
+    android:id="@+id/parentLayout">
 
     <ScrollView
         android:id="@+id/accessScrollView"
@@ -26,7 +27,8 @@
                 android:id="@+id/access"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:fontFamily="@font/montserrat_bold"
+                android:fontFamily="@font/montserrat"
+                android:textStyle="bold"
                 android:gravity="center_vertical"
                 android:text="@string/access"
                 android:textAppearance="@style/access" />
@@ -44,8 +46,17 @@
                 android:inputType="textPersonName"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
-                android:textSize="16sp"
-                android:focusedByDefault="true"/>
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/warnUsername"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editUsername"
+                android:fontFamily="@font/montserrat"
+                android:textStyle="italic"
+                android:textColor="@color/red"
+                android:visibility="gone"/>
 
             <EditText
                 android:id="@+id/editPin"
@@ -63,13 +74,25 @@
                 android:textSize="16sp"
                 android:visibility="gone"/>
 
+            <TextView
+                android:id="@+id/warnPin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editPin"
+                android:paddingBottom="10dp"
+                android:fontFamily="@font/montserrat"
+                android:textStyle="italic"
+                android:textColor="@color/red"
+                android:visibility="gone"/>
+
             <CheckBox
                 android:id="@+id/setPin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/editPin"
-                android:fontFamily="@font/montserrat_regular"
+                android:fontFamily="@font/montserrat"
                 android:text="@string/set_pin"
+                android:layout_marginTop="10dp"
                 android:textSize="16sp" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -79,7 +102,7 @@
                 android:layout_below="@id/setPin"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/btn_border"
-                android:fontFamily="@font/montserrat_bold"
+                android:fontFamily="@font/montserrat"
                 android:text="@string/enterBtn"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
