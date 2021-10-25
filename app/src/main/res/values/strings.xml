@@ -2,6 +2,10 @@
     <string name="app_name">Savings Tracker</string>
     <string name="access">Access</string>
     <string name="set_pin">Set Pin</string>
+    <string name="access_with_pin">Access with PIN</string>
     <string name="enter_username">Enter your username</string>
+    <string name="enter_pin">Enter your 4 digit pin</string>
     <string name="enterBtn">Enter</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

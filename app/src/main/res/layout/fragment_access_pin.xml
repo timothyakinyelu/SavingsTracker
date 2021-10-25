@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".screens.AccessPinFragment"
+    android:id="@+id/parentPinLayout">
+
+        <RelativeLayout
+            android:id="@+id/text_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            app:layout_constraintBottom_toTopOf="@+id/root_otp_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.837">
+
+            <TextView
+                android:id="@+id/access_with"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:fontFamily="@font/montserrat"
+                android:gravity="center_vertical"
+                android:text="@string/access_with_pin"
+                android:textAppearance="@style/access_with_pin"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/enter_your_"
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_below="@id/access_with"
+                android:gravity="center_vertical"
+                android:text="@string/enter_pin"
+                android:textAppearance="@style/enter_pin" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/root_otp_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:weightSum="4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:id="@+id/edit_box1"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:autofillHints="1"
+                android:background="@drawable/input_border"
+                android:gravity="center"
+                android:inputType="number"
+                android:labelFor="@id/edit_box1"
+                android:maxLength="1"
+                android:textSize="30sp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <EditText
+                android:id="@+id/edit_box2"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:autofillHints="2"
+                android:background="@drawable/input_border"
+                android:gravity="center"
+                android:inputType="number"
+                android:labelFor="@id/edit_box2"
+                android:maxLength="1"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/edit_box3"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:autofillHints="3"
+                android:background="@drawable/input_border"
+                android:gravity="center"
+                android:inputType="number"
+                android:labelFor="@id/edit_box3"
+                android:maxLength="1"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/edit_box4"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_weight="1"
+                android:autofillHints="4"
+                android:background="@drawable/input_border"
+                android:gravity="center"
+                android:inputType="number"
+                android:labelFor="@id/edit_box4"
+                android:maxLength="1"
+                android:textSize="30sp"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/enterBtn"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:background="@drawable/btn_border"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/enterBtn"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/root_otp_layout"
+            app:layout_constraintVertical_bias="0.202" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,17 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.AccessActivity"
+    tools:context=".screens.AccessFragment"
     android:id="@+id/parentLayout">
-
-    <ScrollView
-        android:id="@+id/accessScrollView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -121,6 +112,5 @@
                 android:textSize="20sp" />
 
         </RelativeLayout>
-    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
