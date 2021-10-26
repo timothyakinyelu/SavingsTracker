@@ -4,4 +4,6 @@
     <string name="set_pin">Set Pin</string>
     <string name="enter_username">Enter your username</string>
     <string name="enterBtn">Enter</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>
