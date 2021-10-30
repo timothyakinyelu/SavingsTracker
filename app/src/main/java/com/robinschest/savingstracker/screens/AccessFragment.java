@@ -1,9 +1,12 @@
 package com.robinschest.savingstracker.screens;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavDirections;
 import androidx.navigation.Navigation;
@@ -11,11 +14,18 @@ import androidx.navigation.Navigation;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.robinschest.savingstracker.R;
 
 public class AccessFragment extends Fragment implements View.OnClickListener {
-    NavDirections action;
+    private CheckBox pinCheckBox;
+    private EditText editUsername, editPin;
+    private TextView warnUsername, warnPin;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -28,12 +38,92 @@ public class AccessFragment extends Fragment implements View.OnClickListener {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        view.findViewById(R.id.enterBtn).setOnClickListener(this);
+        initElements(view);
+        onCheckBoxClick();
+    }
+
+    /**
+     * Set edit pin view visibility when checkbox is clicked.
+     * Overrides onCheckedChange method
+     * */
+    private void onCheckBoxClick() {
+        pinCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            /** The CompoundButton.OnCheckedChangeListener class method
+             *  can be replaced with a lambda function, but I prefer to know what class
+             *  and methods I borrow from android library
+             **/
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked) {
+                    editPin.setVisibility(View.VISIBLE);
+                } else {
+                    editPin.setVisibility(View.GONE);
+                    warnPin.setVisibility(View.GONE);
+                }
+            }
+        });
+    }
+
+    /**
+     * Initialize all layout elements, and set click listeners
+     **/
+    private void initElements(View view) {
+        pinCheckBox = view.findViewById(R.id.setPin);
+        editUsername = view.findViewById(R.id.editUsername);
+        editPin = view.findViewById(R.id.editPin);
+        warnUsername = view.findViewById(R.id.warnUsername);
+        warnPin = view.findViewById(R.id.warnPin);
+        AppCompatButton enterBtn = view.findViewById(R.id.enterBtn);
+        ConstraintLayout parentLayout = view.findViewById(R.id.accessLayout);
+
+        editUsername.requestFocus();
+        enterBtn.setOnClickListener(this);
+        parentLayout.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        action = AccessFragmentDirections.actionAccessFragmentToHomeFragment();
-        Navigation.findNavController(v).navigate(action);
+        int id = v.getId();
+        if(id == R.id.enterBtn) {
+            authenticate(v);
+        } else if(id == R.id.accessLayout) {
+             hideSoftKeyBoard(v);
+        }
+    }
+
+    private void authenticate(View view) {
+        if(validateInput()) {
+            warnUsername.setVisibility(View.GONE);
+            warnPin.setVisibility(View.GONE);
+
+            NavDirections action = AccessFragmentDirections.actionAccessFragmentToHomeFragment();
+            Navigation.findNavController(view).navigate(action);
+        }
+    }
+
+    private boolean validateInput() {
+        if(editUsername.getText().toString().trim().equals("")) {
+            warnUsername.setVisibility(View.VISIBLE);
+            warnUsername.setText("Username is required!");
+            return false;
+        }
+
+        if(pinCheckBox.isChecked()) {
+            if(editPin.getText().toString().trim().equals("")) {
+                warnPin.setVisibility(View.VISIBLE);
+                warnPin.setText("Enter a 4-digit PIN!");
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private void hideSoftKeyBoard(View view) {
+        View access = view.findViewById(R.id.accessLayout);
+        if(access != null && getActivity() != null) {
+            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
     }
 }
