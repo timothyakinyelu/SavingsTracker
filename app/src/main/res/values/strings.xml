@@ -4,4 +4,6 @@
     <string name="set_pin">Set Pin</string>
     <string name="enter_username">Enter your username</string>
     <string name="enterBtn">Enter</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
