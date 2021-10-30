@@ -9,6 +9,10 @@
         <entry key="app/src/main/res/layout/activity_access.xml" value="0.15" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.20260416666666667" />
         <entry key="app/src/main/res/layout/fragment_access.xml" value="0.14932432432432433" />
+        <entry key="app/src/main/res/layout/fragment_access_pin.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.14932432432432433" />
+        <entry key="app/src/main/res/layout/fragment_search.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.14932432432432433" />
       </map>
     </option>
   </component>
