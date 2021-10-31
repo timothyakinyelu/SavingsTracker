@@ -20,12 +20,14 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.robinschest.savingstracker.MainActivity;
 import com.robinschest.savingstracker.R;
 
 public class AccessFragment extends Fragment implements View.OnClickListener {
     private CheckBox pinCheckBox;
     private EditText editUsername, editPin;
     private TextView warnUsername, warnPin;
+    private ConstraintLayout parentLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -74,7 +76,7 @@ public class AccessFragment extends Fragment implements View.OnClickListener {
         warnUsername = view.findViewById(R.id.warnUsername);
         warnPin = view.findViewById(R.id.warnPin);
         AppCompatButton enterBtn = view.findViewById(R.id.enterBtn);
-        ConstraintLayout parentLayout = view.findViewById(R.id.accessLayout);
+        parentLayout = view.findViewById(R.id.accessLayout);
 
         editUsername.requestFocus();
         enterBtn.setOnClickListener(this);
@@ -87,7 +89,7 @@ public class AccessFragment extends Fragment implements View.OnClickListener {
         if(id == R.id.enterBtn) {
             authenticate(v);
         } else if(id == R.id.accessLayout) {
-             hideSoftKeyBoard(v);
+             MainActivity.hideSoftKeyBoard(parentLayout, getActivity());
         }
     }
 
@@ -117,13 +119,5 @@ public class AccessFragment extends Fragment implements View.OnClickListener {
         }
 
         return true;
-    }
-
-    private void hideSoftKeyBoard(View view) {
-        View access = view.findViewById(R.id.accessLayout);
-        if(access != null && getActivity() != null) {
-            InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-        }
     }
 }
