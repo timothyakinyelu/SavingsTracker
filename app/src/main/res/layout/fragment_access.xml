@@ -4,17 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.AccessActivity"
-    android:id="@+id/parentLayout">
-
-    <ScrollView
-        android:id="@+id/accessScrollView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    tools:context=".screens.AccessFragment"
+    android:id="@+id/accessLayout">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -24,7 +15,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/access"
+                android:id="@+id/accessFragment"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:fontFamily="@font/montserrat"
@@ -37,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/usernameLayout"
-                android:layout_below="@+id/access">
+                android:layout_below="@+id/accessFragment">
 
                 <EditText
                     android:id="@+id/editUsername"
@@ -121,6 +112,5 @@
                 android:textSize="20sp" />
 
         </RelativeLayout>
-    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
