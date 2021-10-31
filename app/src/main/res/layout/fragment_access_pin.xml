@@ -1,14 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/accessLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".screens.AccessPinFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Access Pin Fragment" />
+        android:layout_height="wrap_content"
+        android:layout_margin="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-</FrameLayout>
+        <TextView
+            android:id="@+id/accessPinFragment"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/montserrat"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
+            android:text="@string/access"
+            android:textAppearance="@style/access" />
+
+        <TextView
+            android:id="@+id/enterPin"
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:layout_below="@id/accessPinFragment"
+            android:text="@string/enter_pin"
+            android:textAppearance="@style/enterPin"
+            android:gravity="center_vertical"
+            android:fontFamily="@font/montserrat"/>
+
+        <LinearLayout
+            android:id="@+id/pinInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="124dp"
+            android:orientation="horizontal"
+            android:weightSum="4"
+            android:layout_below="@id/enterPin">
+
+            <EditText
+                android:id="@+id/pin_edit_box1"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:autofillHints="1"
+                android:background="@drawable/input_border"
+                android:gravity="center"
+                android:inputType="number"
+                android:labelFor="@id/pin_edit_box1"
+                android:maxLength="1"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/pin_edit_box2"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:autofillHints="1"
+                android:background="@drawable/input_border"
+                android:gravity="center"
+                android:inputType="number"
+                android:labelFor="@id/pin_edit_box2"
+                android:maxLength="1"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/pin_edit_box3"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_marginEnd="20dp"
+                android:layout_weight="1"
+                android:autofillHints="1"
+                android:background="@drawable/input_border"
+                android:gravity="center"
+                android:inputType="number"
+                android:labelFor="@id/pin_edit_box3"
+                android:maxLength="1"
+                android:textSize="30sp" />
+
+            <EditText
+                android:id="@+id/pin_edit_box4"
+                android:layout_width="0dp"
+                android:layout_height="120dp"
+                android:layout_weight="1"
+                android:autofillHints="1"
+                android:background="@drawable/input_border"
+                android:gravity="center"
+                android:inputType="number"
+                android:labelFor="@id/pin_edit_box4"
+                android:maxLength="1"
+                android:textSize="30sp" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/enterBtn"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:layout_below="@id/pinInputLayout"
+            android:background="@drawable/btn_border"
+            android:fontFamily="@font/montserrat"
+            android:text="@string/enterBtn"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
