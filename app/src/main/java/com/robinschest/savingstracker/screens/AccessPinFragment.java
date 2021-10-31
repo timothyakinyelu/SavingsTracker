@@ -2,65 +2,102 @@ package com.robinschest.savingstracker.screens;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.NavAction;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.robinschest.savingstracker.MainActivity;
 import com.robinschest.savingstracker.R;
+import com.robinschest.savingstracker.utils.GenericKeyEvent;
+import com.robinschest.savingstracker.utils.GenericTextWatcher;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AccessPinFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class AccessPinFragment extends Fragment {
-
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public AccessPinFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AccessPinFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static AccessPinFragment newInstance(String param1, String param2) {
-        AccessPinFragment fragment = new AccessPinFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
+public class AccessPinFragment extends Fragment implements View.OnClickListener {
+    private EditText pinEditBox1, pinEditBox2, pinEditBox3, pinEditBox4;
+    private AppCompatButton enterBtn;
+    private ConstraintLayout accessPinLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_access_pin, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        initElements(view);
+        addTextChangeListener();
+        setKeyListener();
+    }
+
+    private void setKeyListener() {
+        pinEditBox1.setOnKeyListener(new GenericKeyEvent(pinEditBox1, null));
+        pinEditBox2.setOnKeyListener(new GenericKeyEvent(pinEditBox2, pinEditBox1));
+        pinEditBox3.setOnKeyListener(new GenericKeyEvent(pinEditBox3, pinEditBox2));
+        pinEditBox4.setOnKeyListener(new GenericKeyEvent(pinEditBox4, pinEditBox3));
+    }
+
+    private void addTextChangeListener() {
+        pinEditBox1.addTextChangedListener(new GenericTextWatcher(pinEditBox1, pinEditBox2));
+        pinEditBox2.addTextChangedListener(new GenericTextWatcher(pinEditBox2, pinEditBox3));
+        pinEditBox3.addTextChangedListener(new GenericTextWatcher(pinEditBox3, pinEditBox4));
+        pinEditBox4.addTextChangedListener(new GenericTextWatcher(pinEditBox4, null));
+    }
+
+    private void initElements(View view) {
+        pinEditBox1 = view.findViewById(R.id.pin_edit_box1);
+        pinEditBox2 = view.findViewById(R.id.pin_edit_box2);
+        pinEditBox3 = view.findViewById(R.id.pin_edit_box3);
+        pinEditBox4 = view.findViewById(R.id.pin_edit_box4);
+        enterBtn = view.findViewById(R.id.enterBtn);
+        accessPinLayout = view.findViewById(R.id.accessPinLayout);
+
+        enterBtn.setOnClickListener(this);
+        accessPinLayout.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        if (id == R.id.enterBtn) {
+            authenticate(v);
+        } else if (id == R.id.accessPinLayout) {
+            MainActivity.hideSoftKeyBoard(accessPinLayout, getActivity());
+        }
+    }
+
+    /**
+     * check if entered pin matches hashed value stored in rooms
+     **/
+    private void authenticate(View view) {
+        if (validateInput()) {
+            NavDirections action = AccessPinFragmentDirections.actionAccessPinFragmentToHomeFragment();
+            Navigation.findNavController(view).navigate(action);
+        }
+    }
+
+    private boolean validateInput() {
+        if (!pinEditBox2.getText().toString().isEmpty()
+                && !pinEditBox2.getText().toString().isEmpty()
+                && !pinEditBox3.getText().toString().isEmpty()
+                && !pinEditBox4.getText().toString().isEmpty()) {
+            return true;
+        }
+
+        Toast.makeText(getContext(), "Incomplete Value", Toast.LENGTH_LONG).show();
+        return false;
     }
 }
