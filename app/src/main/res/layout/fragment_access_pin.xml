@@ -2,7 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/accessLayout"
+    android:id="@+id/accessPinLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".screens.AccessPinFragment">
@@ -14,23 +14,43 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/accessPinFragment"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/montserrat"
-            android:textStyle="bold"
-            android:gravity="center_vertical"
-            android:text="@string/access"
-            android:textAppearance="@style/access" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:id="@+id/accessTextLayout"
+            >
+            <TextView
+                android:id="@+id/accessPinText"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:fontFamily="@font/montserrat"
+                android:textStyle="bold"
+                android:layout_weight="1.35"
+                android:gravity="center_vertical"
+                android:text="@string/access"
+                android:textAppearance="@style/access" />
+
+            <TextView
+                android:id="@+id/withPinText"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:fontFamily="@font/montserrat"
+                android:textStyle="bold"
+                android:layout_weight="0.7"
+                android:gravity="center_vertical"
+                android:text="@string/with_pin"
+                android:textAppearance="@style/with_pin" />
+        </LinearLayout>
 
         <TextView
             android:id="@+id/enterPin"
             android:layout_width="match_parent"
             android:layout_height="34dp"
-            android:layout_below="@id/accessPinFragment"
+            android:layout_below="@id/accessTextLayout"
             android:text="@string/enter_pin"
+            android:layout_marginBottom="10dp"
             android:textAppearance="@style/enterPin"
             android:gravity="center_vertical"
             android:fontFamily="@font/montserrat"/>
