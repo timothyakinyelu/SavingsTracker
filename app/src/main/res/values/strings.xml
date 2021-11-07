@@ -13,4 +13,6 @@
     <string name="profile">Profile</string>
     <string name="requiredUsername">Username is required!</string>
     <string name="requiredPin">Enter a 4-digit PIN!</string>
+    <string name="incomeText">₦332,000,000.000</string>
+    <string name="incomeTitle">Income:</string>
 </resources>
