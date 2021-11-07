@@ -11,4 +11,6 @@
     <string name="search">Search</string>
     <string name="settings">Settings</string>
     <string name="profile">Profile</string>
+    <string name="requiredUsername">Username is required!</string>
+    <string name="requiredPin">Enter a 4-digit PIN!</string>
 </resources>

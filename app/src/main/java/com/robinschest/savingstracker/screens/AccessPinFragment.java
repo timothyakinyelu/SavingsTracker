@@ -1,30 +1,27 @@
 package com.robinschest.savingstracker.screens;
 
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavAction;
-import androidx.navigation.NavDirections;
-import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
+
+import com.robinschest.savingstracker.BaseFragment;
 import com.robinschest.savingstracker.MainActivity;
 import com.robinschest.savingstracker.R;
 import com.robinschest.savingstracker.utils.GenericKeyEvent;
 import com.robinschest.savingstracker.utils.GenericTextWatcher;
 
-public class AccessPinFragment extends Fragment implements View.OnClickListener {
+public class AccessPinFragment extends BaseFragment implements View.OnClickListener {
     private EditText pinEditBox1, pinEditBox2, pinEditBox3, pinEditBox4;
-    private AppCompatButton enterBtn;
     private ConstraintLayout accessPinLayout;
 
     @Override
@@ -41,6 +38,7 @@ public class AccessPinFragment extends Fragment implements View.OnClickListener 
         initElements(view);
         addTextChangeListener();
         setKeyListener();
+        setBottomNavViewVisibility(View.GONE);
     }
 
     private void setKeyListener() {
@@ -62,7 +60,7 @@ public class AccessPinFragment extends Fragment implements View.OnClickListener 
         pinEditBox2 = view.findViewById(R.id.pin_edit_box2);
         pinEditBox3 = view.findViewById(R.id.pin_edit_box3);
         pinEditBox4 = view.findViewById(R.id.pin_edit_box4);
-        enterBtn = view.findViewById(R.id.enterBtn);
+        AppCompatButton enterBtn = view.findViewById(R.id.enterBtn);
         accessPinLayout = view.findViewById(R.id.accessPinLayout);
 
         enterBtn.setOnClickListener(this);

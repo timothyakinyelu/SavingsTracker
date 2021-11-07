@@ -1,29 +1,26 @@
 package com.robinschest.savingstracker.screens;
 
-import android.content.Context;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.AppCompatButton;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavDirections;
-import androidx.navigation.Navigation;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatButton;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.navigation.NavDirections;
+import androidx.navigation.Navigation;
+
+import com.robinschest.savingstracker.BaseFragment;
 import com.robinschest.savingstracker.MainActivity;
 import com.robinschest.savingstracker.R;
 
-public class AccessFragment extends Fragment implements View.OnClickListener {
+public class AccessFragment extends BaseFragment implements View.OnClickListener {
     private CheckBox pinCheckBox;
     private EditText editUsername, editPin;
     private TextView warnUsername, warnPin;
@@ -42,6 +39,7 @@ public class AccessFragment extends Fragment implements View.OnClickListener {
 
         initElements(view);
         onCheckBoxClick();
+        setBottomNavViewVisibility(View.GONE);
     }
 
     /**
@@ -106,14 +104,14 @@ public class AccessFragment extends Fragment implements View.OnClickListener {
     private boolean validateInput() {
         if(editUsername.getText().toString().trim().equals("")) {
             warnUsername.setVisibility(View.VISIBLE);
-            warnUsername.setText("Username is required!");
+            warnUsername.setText(R.string.requiredUsername);
             return false;
         }
 
         if(pinCheckBox.isChecked()) {
             if(editPin.getText().toString().trim().equals("")) {
                 warnPin.setVisibility(View.VISIBLE);
-                warnPin.setText("Enter a 4-digit PIN!");
+                warnPin.setText(R.string.requiredPin);
                 return false;
             }
         }
