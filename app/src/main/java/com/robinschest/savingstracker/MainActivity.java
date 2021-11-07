@@ -11,10 +11,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class MainActivity extends AppCompatActivity {
-    private BottomNavigationView bottomNav;
+    private BottomAppBar bottomAppBar;
+    private FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +25,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.nav_host_fragment);
+        assert navHostFragment != null;
         NavController navController = navHostFragment.getNavController();
 
-        bottomNav = findViewById(R.id.bottomNavigationView);
+        BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
         bottomNav.setBackground(null);
         bottomNav.getMenu().getItem(2).setEnabled(false);
         NavigationUI.setupWithNavController(bottomNav, navController);
+
+        bottomAppBar = findViewById(R.id.bottomAppBar);
+        fab = findViewById(R.id.fab);
     }
 
     public static void hideSoftKeyBoard(View view, Activity activity) {
@@ -36,5 +43,10 @@ public class MainActivity extends AppCompatActivity {
             InputMethodManager imm = (InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
+    }
+
+    public void setBottomNavigationVisibility(int bottomNavViewVisibility) {
+        bottomAppBar.setVisibility(bottomNavViewVisibility);
+        fab.setVisibility(bottomNavViewVisibility);
     }
 }
