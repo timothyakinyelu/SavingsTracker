@@ -63,4 +63,24 @@
             #6D6464
         </item>
     </style>
+
+    <style name="welcomeText">
+        <item name="android:textSize">
+            14sp
+        </item>
+
+        <item name="android:textColor">
+            #120A0A
+        </item>
+    </style>
+
+    <style name="user">
+        <item name="android:textSize">
+            20sp
+        </item>
+
+        <item name="android:textColor">
+            #501260
+        </item>
+    </style>
 </resources>

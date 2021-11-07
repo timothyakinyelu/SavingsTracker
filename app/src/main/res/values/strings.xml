@@ -15,4 +15,6 @@
     <string name="requiredPin">Enter a 4-digit PIN!</string>
     <string name="incomeText">₦332,000,000.000</string>
     <string name="incomeTitle">Income:</string>
+    <string name="welcomeText">Welcome!</string>
+    <string name="user">Kwaghbee</string>
 </resources>
