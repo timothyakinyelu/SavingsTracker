@@ -6,4 +6,9 @@
     <string name="enter_username">Enter your username</string>
     <string name="enterBtn">Enter</string>
     <string name="enter_pin"> Enter your 4-digit PIN</string>
+    <string name="add_expense_button">add expense button</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="settings">Settings</string>
+    <string name="profile">Profile</string>
 </resources>
